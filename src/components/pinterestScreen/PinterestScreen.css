@@ -1,0 +1,55 @@
+.pinterest-screen {
+	background-color: white;
+	box-shadow: 1px 1px 20px 0px rgba(169, 178, 185, 0.705);
+}
+.pinterest-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-areas: 'NavBar Contenido Contenido Contenido Contenido Contenido';
+	width: 100%;
+	height: 100%;
+}
+.pinterest-grid-area-navBar {
+	grid-area: NavBar;
+}
+.pinterest-grid-area-content {
+	grid-area: Contenido;
+}
+.navbar-fixed {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	background-color: white;
+
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0px;
+}
+
+.pinterest-searchBar {
+	background-color: white;
+	height: 6rem;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0px;
+	z-index: 100;
+}
+.pinterest-content {
+	/* background-color: rgb(224, 64, 203); */
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+/* Para mostrar Lupa */
+/* :hover {
+	cursor: -moz-zoom-in;
+	cursor: -webkit-zoom-in;
+	cursor: zoom-in;
+} */

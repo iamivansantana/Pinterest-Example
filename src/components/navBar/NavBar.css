@@ -1,0 +1,55 @@
+.icons-container {
+	overflow-y: scroll;
+	scrollbar-color: transparent transparent;
+	scrollbar-width: thin;
+}
+.icons-container::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+.icons-container::-webkit-scrollbar:vertical {
+	width: 2px;
+}
+.icons-container::-webkit-scrollbar-thumb {
+	background-color: #e7e7e7;
+	border-radius: 40px;
+}
+
+.icon-pinterest {
+	width: 45px;
+	height: 45px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1.5rem;
+	transition: 0.15s ease-in-out;
+}
+.icon-pinterest:hover {
+	cursor: pointer;
+	transform: scale(0.9);
+}
+.btn-navBar {
+	width: 45px;
+	height: 45px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: 0.15s ease-in-out;
+	margin: 1.5rem;
+	border-radius: 18px;
+	box-shadow: 0px 15px 15px 0px rgba(135, 152, 207, 0.281);
+}
+.btn-navBar:hover {
+	cursor: pointer;
+	transform: scale(0.9);
+}
+
+.btn-navBarWhite {
+	background-color: white;
+	border: 2px solid #556585;
+}
+
+.btn-navBarBlack {
+	background-color: #131313;
+	border: 2px solid #131313;
+}

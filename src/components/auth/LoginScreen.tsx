@@ -1,0 +1,119 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm';
+import './auth.css';
+
+const LoginScreen = () => {
+	//Interface de Usuario
+	interface iUser {
+		email: string;
+		password: string;
+	}
+	//objeto usuario
+	const ivan: iUser = {
+		email: 'ivan@gmail.com',
+		password: 'password',
+	};
+
+	//Utilizacion de hook useForm para manejo de campos en el formulario
+	const [formValues, handleInputChange] = useForm(ivan);
+	//Desestructuracion de propiedades
+	const { email, password } = formValues;
+
+	//Submit del Formulario
+	const handleLogin = (e: any) => {
+		e.preventDefault();
+		console.log('form');
+	};
+
+	return (
+		<>
+			<div className='body'>
+				<div className='containerProject'>
+					<div className='flex flex-center'>
+						<div className='container-auth'>
+							<div className='auth-grid'>
+								<div className='grid-area-From flex flex-center flex-column'>
+									<h1
+										className='text-head text-bold'
+										style={{ textAlign: 'center', color: 'var(--textColorSecondary)' }}
+									>
+										Login.
+									</h1>
+									<div>
+										<img
+											className='media-icon'
+											src='assets\icons\gg.svg'
+											alt='google-icon'
+										/>
+										<img
+											className='media-icon'
+											src='assets\icons\fb.svg'
+											alt='facebook-icon'
+										/>
+										<img
+											className='media-icon'
+											src='assets\icons\tw.svg'
+											alt='twitter-icon'
+										/>
+										<img className='media-icon' src='assets\icons\vk.svg' alt='vk-icon' />
+									</div>
+									<div>
+										<p>or use your email to enter:</p>
+									</div>
+
+									<form onSubmit={handleLogin} style={{ width: '60%' }}>
+										<div className='flex flex-column'>
+											{/* {msgError && <div className='auth__alert-error'>{msgError}</div>} */}
+
+											<input
+												type='text'
+												placeholder='Email'
+												name='email'
+												value={email}
+												className='auth-input'
+												autoComplete='off'
+												onChange={handleInputChange}
+											/>
+
+											<input
+												type='password'
+												placeholder='Password'
+												name='password'
+												value={password}
+												className='auth-input'
+												onChange={handleInputChange}
+											/>
+
+											<div
+												className='flex flex-center'
+												style={{ width: '100%', marginLeft: '5px' }}
+											>
+												<button className='btn-auth btn-auth1' type='submit'>
+													Sign In
+												</button>
+
+												<Link className='btn-auth btn-auth2' to='/register'>
+													Sign Up
+												</Link>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div className='grid-area-Img'>
+									<img
+										className='img-cover'
+										src='assets\img\ImgLogin.webp'
+										alt='portada-img'
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+};
+
+export default LoginScreen;
