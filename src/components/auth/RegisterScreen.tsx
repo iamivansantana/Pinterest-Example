@@ -1,9 +1,21 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
+import validator from 'validator';
 import './auth.css';
+import AuthContext from '../../context/authContext/AuthContext';
+import { useContext } from 'react';
 
 const RegisterScreen = () => {
+	//Acceso al context
+	const {
+		authState,
+		setError,
+		removeError,
+		startRegisterWithEmailPasswordName,
+	} = useContext(AuthContext);
+
+	const { msgError } = authState.authState;
+
 	//Interface de Registro de Usuario
 	interface iRegisterUser {
 		name: string;
@@ -25,7 +37,27 @@ const RegisterScreen = () => {
 	//Submit del Formulario
 	const handleRegister = (e: any) => {
 		e.preventDefault();
-		console.log('form');
+
+		if (isFormValid()) {
+			console.log('formREGISTER', name, email, password);
+			startRegisterWithEmailPasswordName(email, password, name);
+		}
+	};
+
+	const isFormValid = (): boolean => {
+		if (name.trim().length === 0) {
+			setError('Name is Required');
+			return false;
+		} else if (!validator.isEmail(email)) {
+			setError('Email is not valid');
+			return false;
+		} else if (password.length < 6) {
+			setError('Password should be at least 6 characters');
+			return false;
+		}
+
+		removeError();
+		return true;
 	};
 
 	return (
@@ -46,20 +78,24 @@ const RegisterScreen = () => {
 									<div>
 										<img
 											className='media-icon'
-											src='assets\icons\gg.svg'
+											src='\assets\icons\gg.svg'
 											alt='google-icon'
 										/>
 										<img
 											className='media-icon'
-											src='assets\icons\fb.svg'
+											src='\assets\icons\fb.svg'
 											alt='facebook-icon'
 										/>
 										<img
 											className='media-icon'
-											src='assets\icons\tw.svg'
+											src='\assets\icons\tw.svg'
 											alt='twitter-icon'
 										/>
-										<img className='media-icon' src='assets\icons\vk.svg' alt='vk-icon' />
+										<img
+											className='media-icon'
+											src='\assets\icons\vk.svg'
+											alt='vk-icon'
+										/>
 									</div>
 									<div>
 										<p>or use your email for registration:</p>
@@ -107,6 +143,9 @@ const RegisterScreen = () => {
 													</span>
 												</label>
 											</div>
+											{msgError && (
+												<div className='auth-alert-error'>{`¡${msgError}!`}</div>
+											)}
 
 											<div
 												className='flex flex-center'
@@ -116,7 +155,7 @@ const RegisterScreen = () => {
 													Sign Up
 												</button>
 
-												<Link className='btn-auth btn-auth2' to='/login'>
+												<Link className='btn-auth btn-auth2' to='/auth/login'>
 													Sign In
 												</Link>
 											</div>
@@ -126,7 +165,7 @@ const RegisterScreen = () => {
 								<div className='grid-area-Img'>
 									<img
 										className='img-cover'
-										src='assets\img\ImgLoginAndRegister.webp'
+										src='\assets\img\ImgLoginAndRegister.webp'
 										alt='portada-img'
 									/>
 								</div>

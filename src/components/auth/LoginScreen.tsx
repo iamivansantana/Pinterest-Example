@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../context/authContext/AuthContext';
 import { useForm } from '../../hooks/useForm';
 import './auth.css';
 
 const LoginScreen = () => {
+	const { authState, startGoogleLogin, startLoginEmailPassword } =
+		useContext(AuthContext);
+
+	const { loading } = authState.authState;
+
 	//Interface de Usuario
 	interface iUser {
 		email: string;
@@ -20,10 +26,17 @@ const LoginScreen = () => {
 	//Desestructuracion de propiedades
 	const { email, password } = formValues;
 
-	//Submit del Formulario
-	const handleLogin = (e: any) => {
+	//Login con Google
+	const handleGoogleLogin = (e: any): void => {
 		e.preventDefault();
-		console.log('form');
+		startGoogleLogin();
+	};
+
+	//Login con Email y Password
+	const handleLogin = (e: any): void => {
+		e.preventDefault();
+		startLoginEmailPassword(email, password);
+		console.log(loading);
 	};
 
 	return (
@@ -41,22 +54,32 @@ const LoginScreen = () => {
 										Login.
 									</h1>
 									<div>
+										<button
+											type='button'
+											onClick={handleGoogleLogin}
+											style={{ border: 'none', backgroundColor: 'transparent' }}
+										>
+											<img
+												className='media-icon'
+												src='\assets\icons\gg.svg'
+												alt='google-icone'
+											/>
+										</button>
 										<img
 											className='media-icon'
-											src='assets\icons\gg.svg'
-											alt='google-icon'
-										/>
-										<img
-											className='media-icon'
-											src='assets\icons\fb.svg'
+											src='\assets\icons\fb.svg'
 											alt='facebook-icon'
 										/>
 										<img
 											className='media-icon'
-											src='assets\icons\tw.svg'
+											src='\assets\icons\tw.svg'
 											alt='twitter-icon'
 										/>
-										<img className='media-icon' src='assets\icons\vk.svg' alt='vk-icon' />
+										<img
+											className='media-icon'
+											src='\assets\icons\vk.svg'
+											alt='vk-icon'
+										/>
 									</div>
 									<div>
 										<p>or use your email to enter:</p>
@@ -89,11 +112,15 @@ const LoginScreen = () => {
 												className='flex flex-center'
 												style={{ width: '100%', marginLeft: '5px' }}
 											>
-												<button className='btn-auth btn-auth1' type='submit'>
+												<button
+													className='btn-auth btn-auth1'
+													type='submit'
+													disabled={loading}
+												>
 													Sign In
 												</button>
 
-												<Link className='btn-auth btn-auth2' to='/register'>
+												<Link className='btn-auth btn-auth2' to='/auth/register'>
 													Sign Up
 												</Link>
 											</div>
@@ -103,7 +130,7 @@ const LoginScreen = () => {
 								<div className='grid-area-Img'>
 									<img
 										className='img-cover'
-										src='assets\img\ImgLogin.webp'
+										src='\assets\img\ImgLogin.webp'
 										alt='portada-img'
 									/>
 								</div>

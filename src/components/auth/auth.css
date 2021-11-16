@@ -73,6 +73,16 @@
 	justify-content: center;
 	text-decoration: none;
 }
+/* Mensaje de error */
+.auth-alert-error {
+	color: red;
+	font-weight: bold;
+	padding-top: 10px;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
 
 @media (max-width: 500px) {
 	.auth-grid {
