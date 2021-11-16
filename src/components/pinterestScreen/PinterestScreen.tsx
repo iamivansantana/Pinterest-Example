@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
+import ModalContext from '../../context/modalContext/ModalContext';
 import PicturesContext from '../../context/picturesContext/PicturesContext';
+import Modal from '../modal/Modal';
+import ModalScreen from '../modal/ModalScreen';
 import NavBar from '../navBar/NavBar';
 import PicturesList from '../picturesCard/PicturesList';
 import SearchBar from '../searchBar/SearchBar';
@@ -7,6 +10,8 @@ import './PinterestScreen.css';
 const PinterestScreen = () => {
 	//Acceso al Context
 	const { pictureState, addItems } = useContext(PicturesContext);
+	//Context de las funciones de la ventana Modal
+	const { isOpen, setIsOpen, imagenModal } = useContext(ModalContext);
 
 	//Desestructuracion del state
 	const { busqueda, imagenes } = pictureState;
@@ -98,6 +103,16 @@ const PinterestScreen = () => {
 	return (
 		<>
 			<div className='body'>
+				<div style={{ position: 'relative', zIndex: 1 }}>
+					<Modal open={isOpen} onClose={() => setIsOpen(false)}>
+						{imagenModal ? (
+							<ModalScreen
+								largeImageURL={imagenModal.largeImageURL}
+								tags={imagenModal.tags}
+							/>
+						) : null}
+					</Modal>
+				</div>
 				<div className='containerProject pinterest-screen'>
 					<div className='pinterest-grid'>
 						<div className='pinterest-grid-area-navBar'>

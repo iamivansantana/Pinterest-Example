@@ -9,6 +9,7 @@
 	--textColorDisable: #d1d1d1;
 	--textColorError: #ffffff;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 body {
