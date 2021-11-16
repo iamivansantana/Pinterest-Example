@@ -1,13 +1,14 @@
 import './PictureCards.css';
 
-const PictureCard = ({ numberClass }: any) => {
-	// const height: string = '200px';
+const PictureCard = ({ imagen, numberClass }: any) => {
+	//Desestructuracion de elementos a prop imagen.
+	const { webformatURL, tags } = imagen;
 	return (
 		<>
 			<div className={`card-container grid-${numberClass}`}>
 				<div className='card-picture'>
 					<div className='image-picture'>
-						<img src='assets\img\lyberty2.jpg' alt='example' />
+						<img src={webformatURL} alt={tags} loading='lazy' />
 					</div>
 					<div className='shadow-picture flex flex-column flex flex-justify-between'>
 						<div className='btns-shadow-picture flex-justify-right'>

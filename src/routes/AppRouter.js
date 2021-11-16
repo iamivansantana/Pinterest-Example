@@ -18,12 +18,9 @@ export const AppRouter = () => {
 		const auth = getAuth();
 		onAuthStateChanged(auth, (user) => {
 			if (user?.uid) {
-				console.log(user?.uid);
-				console.log(user.uid, user.displayName);
 				login(user.uid, user.displayName);
 				setIsLoggedIn(true);
 			} else {
-				console.log('Error aquii');
 				setIsLoggedIn(false);
 			}
 			setChecking(false);

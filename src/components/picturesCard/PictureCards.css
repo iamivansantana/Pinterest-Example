@@ -44,6 +44,7 @@
 	height: 100%;
 	overflow: hidden;
 	border-radius: 25px;
+	border: 1px solid #d6d5db;
 }
 .card-picture .image-picture img {
 	width: 100%;

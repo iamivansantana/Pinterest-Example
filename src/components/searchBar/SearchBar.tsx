@@ -1,22 +1,34 @@
+import { useContext } from 'react';
+import PicturesContext from '../../context/picturesContext/PicturesContext';
 import { useForm } from '../../hooks/useForm';
 import './SearchBar.css';
 
 const SearchBar = () => {
+	//Acceso al Context
+	const { updateBusqueda, cleanItems, pictureState } =
+		useContext(PicturesContext);
+	const { busqueda } = pictureState;
+
 	//objeto usuario
 	const search: {} = {
-		busqueda: '',
+		busquedaBar: '',
 	};
 
 	//Utilizacion de hook useForm para manejo de campos en el formulario
 	const [formValues, handleInputChange] = useForm(search);
 	//Desestructuracion de propiedades
-	const { busqueda } = formValues;
+	const { busquedaBar } = formValues;
 
 	const handleSearch = (e: any) => {
 		e.preventDefault();
-		if (!busqueda) return;
+		if (!busquedaBar) return;
 
-		console.log(busqueda);
+		//Si busqueda es igual al tema mostrado Return para evitar volver a cargar los mismos elementos
+		if (busquedaBar === busqueda) return;
+
+		cleanItems();
+		updateBusqueda(busquedaBar);
+		console.log(busquedaBar);
 	};
 
 	return (
@@ -27,8 +39,8 @@ const SearchBar = () => {
 						className='input-searchBar'
 						type='text'
 						placeholder='Search'
-						name='busqueda'
-						value={busqueda}
+						name='busquedaBar'
+						value={busquedaBar}
 						autoComplete='off'
 						onChange={handleInputChange}
 					/>

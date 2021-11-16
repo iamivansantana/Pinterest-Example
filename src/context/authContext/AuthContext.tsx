@@ -13,6 +13,7 @@ export type AuthContextProps = {
 	) => void;
 	startLoginEmailPassword: (email: string, password: string) => void;
 	login: (uid: string, name: string | null) => void;
+	startLogOut: () => void;
 };
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);

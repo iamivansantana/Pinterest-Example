@@ -10,6 +10,7 @@ import {
 	createUserWithEmailAndPassword,
 	updateProfile,
 	signInWithEmailAndPassword,
+	signOut,
 } from '@firebase/auth';
 import Swal from 'sweetalert2';
 
@@ -70,7 +71,7 @@ const AuthProvider = ({ children }: iProps) => {
 				login(user.uid, user.displayName);
 			})
 			.catch((error) => {
-				console.log(error);
+				// console.log(error);
 				Swal.fire('Error', error.message, 'error');
 			});
 	};
@@ -95,6 +96,17 @@ const AuthProvider = ({ children }: iProps) => {
 	//Login Dispatch
 	const login = (uid: string, name: string | null): void => {
 		dispatch({ type: 'authLogIn', payload: { uid, name } });
+	};
+	//LogOut Firebase
+	const startLogOut = async () => {
+		const auth = getAuth();
+		await signOut(auth);
+
+		logOut();
+	};
+	//LogOut
+	const logOut = () => {
+		dispatch({ type: 'authLogOut' });
 	};
 
 	//Mensaje de Error
@@ -121,6 +133,7 @@ const AuthProvider = ({ children }: iProps) => {
 				startRegisterWithEmailPasswordName,
 				startLoginEmailPassword,
 				login,
+				startLogOut,
 			}}
 		>
 			{children}

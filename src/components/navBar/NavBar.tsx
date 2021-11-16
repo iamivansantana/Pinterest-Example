@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../../context/authContext/AuthContext';
 import './NavBar.css';
 
 const NavBar = () => {
+	const { startLogOut } = useContext(AuthContext);
+
 	return (
 		<>
 			<div className='icons-container'>
@@ -37,9 +40,12 @@ const NavBar = () => {
 						alt='question-icon'
 					/>
 				</div>
-				<div className='btn-navBar btn-navBarWhite'>
-					<img width='20px' src='assets\icons\icon-mas.svg' alt='mas-icon' />
-				</div>
+				<button
+					className='btn-navBar btn-navBarWhite'
+					onClick={() => startLogOut()}
+				>
+					<img width='25px' src='assets\icons\icon-leave.svg' alt='leave-icon' />
+				</button>
 			</div>
 		</>
 	);

@@ -36,7 +36,6 @@ const LoginScreen = () => {
 	const handleLogin = (e: any): void => {
 		e.preventDefault();
 		startLoginEmailPassword(email, password);
-		console.log(loading);
 	};
 
 	return (

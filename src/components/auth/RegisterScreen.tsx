@@ -39,7 +39,6 @@ const RegisterScreen = () => {
 		e.preventDefault();
 
 		if (isFormValid()) {
-			console.log('formREGISTER', name, email, password);
 			startRegisterWithEmailPasswordName(email, password, name);
 		}
 	};

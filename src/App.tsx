@@ -1,11 +1,14 @@
 import AuthProvider from './context/authContext/AuthProvider';
+import PicturesProvider from './context/picturesContext/PicturesProvider';
 import { AppRouter } from './routes/AppRouter.js';
 
 function App() {
 	return (
 		<>
 			<AuthProvider>
-				<AppRouter />
+				<PicturesProvider>
+					<AppRouter />
+				</PicturesProvider>
 			</AuthProvider>
 		</>
 	);
