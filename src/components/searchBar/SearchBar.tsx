@@ -23,12 +23,13 @@ const SearchBar = () => {
 		e.preventDefault();
 		if (!busquedaBar) return;
 
-		//Si busqueda es igual al tema mostrado Return para evitar volver a cargar los mismos elementos
+		//Si busqueda del searchBar es igual ala busqueda  Return para evitar volver a cargar los mismos elementos
 		if (busquedaBar === busqueda) return;
 
+		//Borra los Items guardados
 		cleanItems();
+		//Actualiza el state de Busqueda
 		updateBusqueda(busquedaBar);
-		console.log(busquedaBar);
 	};
 
 	return (

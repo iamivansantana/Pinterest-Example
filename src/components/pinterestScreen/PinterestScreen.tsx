@@ -54,7 +54,7 @@ const PinterestScreen = () => {
 
 	//Effect para  Infinite scroll.
 	useEffect(() => {
-		// const spinner = document.querySelector('.spinner');
+		const spinner: Element | null = document.querySelector('.spinner');
 
 		function ventana(e: any) {
 			//Obtiene el alto de la pagina, alto de la barra, y el scroll recorrido
@@ -73,13 +73,14 @@ const PinterestScreen = () => {
 				//Return si se terminana las paginas
 				if (nuevaPaginaSiguiente > totalpaginas) return;
 
-				//Spinner para simular carga
-				// spinner.classList.add('show');
+				// Mostrar Spinner/Loader
+				if (spinner) spinner.classList.add('show');
 
 				setTimeout(() => {
 					//Se agrega la pagina siguiente a la acual.
 					guardarPaginaActual(nuevaPaginaSiguiente);
-					// spinner.classList.remove('show');
+					// Ocultar Spinner/Loader
+					if (spinner) spinner.classList.remove('show');
 				}, 600);
 			}
 		}
@@ -109,9 +110,10 @@ const PinterestScreen = () => {
 								<SearchBar />
 							</div>
 							<div className='pinterest-content'>
-								{/* <div style={{ backgroundColor: 'tomato' }}> primero</div> */}
-
 								<PicturesList imagenes={imagenes} />
+								<div className='flex flex-center'>
+									<div className='spinner'></div>
+								</div>
 							</div>
 						</div>
 					</div>
