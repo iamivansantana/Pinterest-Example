@@ -12,6 +12,7 @@ const RegisterScreen = () => {
 		setError,
 		removeError,
 		startRegisterWithEmailPasswordName,
+		startGoogleLogin,
 	} = useContext(AuthContext);
 
 	//Desestructuracion del mensaje de error
@@ -25,9 +26,9 @@ const RegisterScreen = () => {
 	}
 	//objeto usuario
 	const ivan: iRegisterUser = {
-		name: 'ivan',
-		email: 'ivan@gmail.com',
-		password: 'password',
+		name: '',
+		email: '',
+		password: '',
 	};
 
 	//Utilizacion de hook useForm para manejo de campos en el formulario
@@ -61,6 +62,12 @@ const RegisterScreen = () => {
 		return true;
 	};
 
+	//Login con Google
+	const handleGoogleLogin = (e: any): void => {
+		e.preventDefault();
+		startGoogleLogin();
+	};
+
 	return (
 		<>
 			<div className='body'>
@@ -77,11 +84,17 @@ const RegisterScreen = () => {
 									</h1>
 
 									<div>
-										<img
-											className='media-icon'
-											src='\assets\icons\gg.svg'
-											alt='google-icon'
-										/>
+										<button
+											type='button'
+											onClick={handleGoogleLogin}
+											style={{ border: 'none', backgroundColor: 'transparent' }}
+										>
+											<img
+												className='media-icon'
+												src='\assets\icons\gg.svg'
+												alt='google-icon'
+											/>
+										</button>
 										<img
 											className='media-icon'
 											src='\assets\icons\fb.svg'

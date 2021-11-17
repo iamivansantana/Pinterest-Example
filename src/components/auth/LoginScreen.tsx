@@ -19,8 +19,8 @@ const LoginScreen = () => {
 	}
 	//objeto usuario
 	const ivan: iUser = {
-		email: 'ivan@gmail.com',
-		password: 'password',
+		email: '',
+		password: '',
 	};
 
 	//Utilizacion de hook useForm para manejo de campos en el formulario
