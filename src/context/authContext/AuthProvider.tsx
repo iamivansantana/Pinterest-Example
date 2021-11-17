@@ -14,6 +14,7 @@ import {
 } from '@firebase/auth';
 import Swal from 'sweetalert2';
 
+//Estado inicial
 const INITIAL_STATE: iAuthState = {
 	uid: '',
 	name: '',
@@ -23,11 +24,13 @@ const INITIAL_STATE: iAuthState = {
 	},
 };
 
+//Definicion de interface para children
 interface iProps {
 	children: JSX.Element | JSX.Element[];
 }
 
 const AuthProvider = ({ children }: iProps) => {
+	//useReducer
 	const [authState, dispatch] = useReducer(authReducer, INITIAL_STATE);
 
 	//Login con Email y password
@@ -46,7 +49,6 @@ const AuthProvider = ({ children }: iProps) => {
 				Swal.fire('Error', error.message, 'error');
 			});
 	};
-
 	const startLoading = () => {
 		dispatch({
 			type: 'authStartLoading',

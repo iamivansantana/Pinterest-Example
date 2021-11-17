@@ -54,6 +54,11 @@ const PinterestScreen = () => {
 
 		consultarAPI();
 
+		// Devolvemos una función para anular la suscripción al evento
+		return () => {
+			guardarPaginaActual(1);
+		};
+
 		// eslint-disable-next-line
 	}, [paginaactual, busqueda]);
 
@@ -64,14 +69,11 @@ const PinterestScreen = () => {
 		function ventana(e: any) {
 			//Obtiene el alto de la pagina, alto de la barra, y el scroll recorrido
 			let { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-			// console.log(scrollTop,clientHeight,scrollHeight);
 
 			//Condicion para InfiniteScroll
 			//En moviles algunos navegadores agregan 56px que agregamos a la suma de (scrollTop + clienteHeight)
 			//se resta 1 a scrollHeight para evitar conflicto con decimales.
 			if (56 + scrollTop + clientHeight >= scrollHeight - 1) {
-				// console.log('fin');
-
 				//Si la condicion se cumple Se pasa a la pagina siguiente
 				const nuevaPaginaSiguiente = paginaactual + 1;
 
@@ -124,7 +126,12 @@ const PinterestScreen = () => {
 							<div className='pinterest-searchBar'>
 								<SearchBar />
 							</div>
-							<div className='pinterest-content'>
+							<div className='pinterest-content '>
+								{imagenes.length === 0 ? (
+									<div className='flex flex-center' style={{ color: 'lightgray' }}>
+										<h1>No se encontraron resultados</h1>
+									</div>
+								) : null}
 								<PicturesList imagenes={imagenes} />
 								<div className='flex flex-center'>
 									<div className='spinner'></div>

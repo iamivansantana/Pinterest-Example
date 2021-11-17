@@ -14,6 +14,7 @@ const RegisterScreen = () => {
 		startRegisterWithEmailPasswordName,
 	} = useContext(AuthContext);
 
+	//Desestructuracion del mensaje de error
 	const { msgError } = authState.authState;
 
 	//Interface de Registro de Usuario
@@ -43,6 +44,7 @@ const RegisterScreen = () => {
 		}
 	};
 
+	//Validacion del formulario con Validator
 	const isFormValid = (): boolean => {
 		if (name.trim().length === 0) {
 			setError('Name is Required');

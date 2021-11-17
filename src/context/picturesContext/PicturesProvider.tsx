@@ -3,16 +3,19 @@ import { iPictureState } from '../../interfaces/interfaces';
 import { pictureReducer } from './PictureReducer';
 import PicturesContext from './PicturesContext';
 
+//Estado inicial
 const INITIAL_STATE: iPictureState = {
-	busqueda: 'pink',
+	busqueda: 'cars',
 	imagenes: [],
 };
 
+//interface para children
 interface iProps {
 	children: JSX.Element | JSX.Element[];
 }
 
 const PicturesProvider = ({ children }: iProps) => {
+	//useReducer
 	const [pictureState, dispatch] = useReducer(pictureReducer, INITIAL_STATE);
 
 	//Agregar Items

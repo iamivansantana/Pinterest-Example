@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 import { iAuthState } from '../../interfaces/interfaces';
 
+//Se definen el tipo de las props que se comparten en el AuthProvider
 export type AuthContextProps = {
 	authState: iAuthState;
 	startGoogleLogin: () => void;

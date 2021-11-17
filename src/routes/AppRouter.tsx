@@ -4,7 +4,7 @@ import { getAuth, onAuthStateChanged } from '@firebase/auth';
 
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
-import { AuthRouter } from './AuthRouter.js';
+import { AuthRouter } from './AuthRouter';
 import PinterestScreen from '../components/pinterestScreen/PinterestScreen';
 import AuthContext from '../context/authContext/AuthContext';
 
@@ -14,6 +14,7 @@ export const AppRouter = () => {
 
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+	//Efecto para regresar el usuario autenticado
 	useEffect(() => {
 		const auth = getAuth();
 		onAuthStateChanged(auth, (user) => {

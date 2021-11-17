@@ -3,6 +3,7 @@ import ModalContext from '../../context/modalContext/ModalContext';
 import './PictureCards.css';
 
 const PictureCard = ({ imagen, numberClass }: any) => {
+	//Acceso al Context
 	const { setIsOpen, setImagenModal } = useContext(ModalContext);
 	//Desestructuracion de elementos a prop imagen.
 	const { webformatURL, largeImageURL, tags } = imagen;

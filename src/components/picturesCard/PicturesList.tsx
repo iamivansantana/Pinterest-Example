@@ -2,6 +2,7 @@ import PictureCard from './PictureCard';
 import './PictureCards.css';
 
 const PicturesList = ({ imagenes }: any) => {
+	//Se inicializa contador que sirve para asignar las clases de posicionamiento en el Grid
 	let contador: number = 0;
 	return (
 		<>

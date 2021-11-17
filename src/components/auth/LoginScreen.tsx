@@ -5,9 +5,11 @@ import { useForm } from '../../hooks/useForm';
 import './auth.css';
 
 const LoginScreen = () => {
+	//Acceso al Context
 	const { authState, startGoogleLogin, startLoginEmailPassword } =
 		useContext(AuthContext);
 
+	//Desestructuracion de loading
 	const { loading } = authState.authState;
 
 	//Interface de Usuario

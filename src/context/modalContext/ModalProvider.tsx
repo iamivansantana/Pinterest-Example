@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ModalContext from './ModalContext';
 
+//Definicion de interface para children
 interface iProps {
 	children: JSX.Element | JSX.Element[];
 }
