@@ -54,11 +54,6 @@ const PinterestScreen = () => {
 
 		consultarAPI();
 
-		// Devolvemos una función para anular la suscripción al evento
-		return () => {
-			guardarPaginaActual(1);
-		};
-
 		// eslint-disable-next-line
 	}, [paginaactual, busqueda]);
 
