@@ -23,6 +23,8 @@ const PinterestScreen = () => {
 	const [paginaactual, guardarPaginaActual] = useState(1);
 	//State que guarda el total de paginas del resultado de la API
 	const [totalpaginas, guardaTotalPaginas] = useState(1);
+	//State para mostrar error
+	const [isItemsFull, setIsItemsFull] = useState(true);
 
 	//useEffect para consultar la api cada que paginaActual o busqueda Cambian.
 	useEffect(() => {
@@ -42,6 +44,14 @@ const PinterestScreen = () => {
 
 				// guardarImagenes(newResultado);
 				addItems(newResultado);
+
+				//Retraso de mensaje (No se encontraron Imagenes)
+				if (!isItemsFull) {
+					setTimeout(() => {
+						setIsItemsFull(newResultado.length === 0);
+					}, 600);
+				} else setIsItemsFull(newResultado.length === 0);
+
 				//calcula el total de paginas
 				const calcularTotalPaginar = Math.ceil(
 					resultado.totalHits / imagenesxpagina
@@ -122,7 +132,7 @@ const PinterestScreen = () => {
 								<SearchBar />
 							</div>
 							<div className='pinterest-content '>
-								{imagenes.length === 0 ? (
+								{isItemsFull ? (
 									<div className='flex flex-center' style={{ color: 'lightgray' }}>
 										<h1>No se encontraron resultados</h1>
 									</div>
