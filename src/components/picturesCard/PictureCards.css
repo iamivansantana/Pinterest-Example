@@ -105,7 +105,7 @@
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	background-color: #d805a39d;
+	background-color: #fd3373c0;
 	box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.479);
 	cursor: pointer;
 	color: white;
@@ -113,7 +113,7 @@
 	z-index: 30;
 }
 .btn-up:hover {
-	background-color: #d805a3ef;
+	background-color: #fd3374;
 	box-shadow: 1px 1px 12px 1px rgba(0, 0, 0, 0.479);
 	transform: scale(0.9);
 }
