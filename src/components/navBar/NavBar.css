@@ -3,6 +3,7 @@
 	scrollbar-color: transparent transparent;
 	scrollbar-width: thin;
 }
+
 .icons-container::-webkit-scrollbar {
 	-webkit-appearance: none;
 }

@@ -27,11 +27,20 @@ body {
 	display: flex;
 	justify-content: center;
 }
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
 .containerProject {
 	width: 95%;
 	max-width: 1290px;
 	background-color: transparent;
 	box-sizing: border-box;
+	animation: fadein 0.5s ease-in;
 }
 /* Flex Styles */
 .flex {
