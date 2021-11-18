@@ -6,6 +6,14 @@ const PicturesList = ({ imagenes }: any) => {
 	let contador: number = 0;
 	return (
 		<>
+			<button
+				onClick={() => {
+					window.scrollTo(0, 0);
+				}}
+				className='btn-up'
+			>
+				<span className='flex flex-center'>Go Up</span>
+			</button>
 			<div className='picturesCard-container'>
 				{imagenes.map((imagen: any, i: any) => {
 					contador++;
