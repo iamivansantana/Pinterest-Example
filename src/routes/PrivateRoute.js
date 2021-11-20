@@ -1,22 +1,10 @@
-import PropTypes from 'prop-types';
-import { Redirect, Route } from 'react-router-dom';
+import { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import AuthContext from '../context/authContext/AuthContext';
 
-export const PrivateRoute = ({
-	isAuthenticated,
-	component: Component,
-	...rest
-}) => {
-	return (
-		<Route
-			{...rest}
-			component={(props) =>
-				isAuthenticated ? <Component {...props} /> : <Redirect to='/auth/login' />
-			}
-		/>
-	);
-};
+export const PrivateRoute = ({ children }) => {
+	const { authState } = useContext(AuthContext);
 
-PrivateRoute.propTypes = {
-	isAuthenticated: PropTypes.bool.isRequired,
-	component: PropTypes.func.isRequired,
+	const isAutenticated = authState.uid;
+	return isAutenticated ? children : <Navigate to='/auth/login' />;
 };

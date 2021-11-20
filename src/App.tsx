@@ -1,7 +1,7 @@
 import AuthProvider from './context/authContext/AuthProvider';
 import ModalProvider from './context/modalContext/ModalProvider';
 import PicturesProvider from './context/picturesContext/PicturesProvider';
-import { AppRouter } from './routes/AppRouter';
+import { AppRouter } from './routes/AppRouter.js';
 
 function App() {
 	return (
