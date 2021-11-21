@@ -2,16 +2,16 @@ import { useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 
-import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
-import { AuthRouter } from './AuthRouter.js';
+import { AuthRouter } from './AuthRouter';
 import PinterestScreen from '../components/pinterestScreen/PinterestScreen';
 import AuthContext from '../context/authContext/AuthContext';
 import NotFound from '../components/pinterestScreen/NotFound';
+import { PrivateRoute } from './PrivateRoute';
 
 export const AppRouter = () => {
 	const { login, startLogOut } = useContext(AuthContext);
-	const [checking, setChecking] = useState(true);
+	const [checking, setChecking] = useState<boolean>(true);
 
 	// Efecto para regresar el usuario autenticado
 	useEffect(() => {

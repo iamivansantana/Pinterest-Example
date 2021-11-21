@@ -4,7 +4,7 @@ _**Aplicación que permite visualizar una galeria de imagenes tipo Pinterest (Es
 
 _La aplicacion hace la autenticacion con firebase, peticiones al API (pixaby) y muestra en pantallla una galeria de imagenes, mostrando a detalle cada una de ellas al hacer clic sobre la miniatura_
 
-_Para el desarrollo de esta aplicación se utilizaron herramientas como: "TypeScript,Contex API,React-router-dom,Fetch,Validator,sweetalert2,firebase,Ventana Modal,Responsive Design..._
+_Para el desarrollo de esta aplicación se utilizaron herramientas como: "TypeScript,Contex API,React-router-domV.6,Fetch,Validator,sweetalert2,firebase,Ventana Modal,Responsive Design..._
 
 ## Comenzando 🚀
 
