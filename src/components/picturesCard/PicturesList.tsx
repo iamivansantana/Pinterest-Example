@@ -11,6 +11,7 @@ const PicturesList = ({ imagenes }: any) => {
 					window.scrollTo(0, 0);
 				}}
 				className='btn-up'
+				type='button'
 			>
 				<span className='flex flex-center'>Go Up</span>
 			</button>

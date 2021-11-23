@@ -34,7 +34,8 @@ const PinterestScreen = () => {
 		const key = '18584834-b8939c3a0661f41d9c3094cbd';
 		const url = `https://pixabay.com/api/?key=${key}&q=${busqueda}&per_page=${imagenesxpagina}&page=${paginaactual}`;
 
-		const consultarAPI = async () => {
+		//Consultar API
+		(async () => {
 			try {
 				const respuesta = await fetch(url);
 				const resultado = await respuesta.json();
@@ -60,9 +61,7 @@ const PinterestScreen = () => {
 			} catch (error) {
 				console.log(error);
 			}
-		};
-
-		consultarAPI();
+		})();
 
 		// eslint-disable-next-line
 	}, [paginaactual, busqueda]);
