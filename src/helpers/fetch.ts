@@ -6,4 +6,21 @@ const fetchGetData = (endpoint: string) => {
 	return fetch(url);
 };
 
-export { fetchGetData };
+//Ejemplo de metodo que recibe un endpoint, data y method.
+const fetchEjemplo = (endpoint: string, data: {}, method: string = 'GET') => {
+	const url = `${baseUrl}/${endpoint}`;
+
+	if (method === 'GET') {
+		return fetch(url);
+	} else {
+		return fetch(url, {
+			method,
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		});
+	}
+};
+
+export { fetchGetData, fetchEjemplo };
