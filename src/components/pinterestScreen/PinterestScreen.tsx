@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import ModalContext from '../../context/modalContext/ModalContext';
 import PicturesContext from '../../context/picturesContext/PicturesContext';
+import { fetchGetData } from '../../helpers/fetch';
 import Modal from '../modal/Modal';
 import ModalScreen from '../modal/ModalScreen';
 import NavBar from '../navBar/NavBar';
@@ -31,13 +32,14 @@ const PinterestScreen = () => {
 		//Si la busqueda esta vacia no se ejecuta la consulta  ?perPage=42&page=6
 		if (busqueda === '') return;
 
-		const key = '18584834-b8939c3a0661f41d9c3094cbd';
-		const url = `https://pixabay.com/api/?key=${key}&q=${busqueda}&per_page=${imagenesxpagina}&page=${paginaactual}`;
+		const key = process.env.REACT_APP_API_KEY;
+		const endpoint = `?key=${key}&q=${busqueda}&per_page=${imagenesxpagina}&page=${paginaactual}`;
 
 		//Consultar API
 		(async () => {
 			try {
-				const respuesta = await fetch(url);
+				//Se manda el endpoint al helper fetchGetData
+				const respuesta = await fetchGetData(endpoint);
 				const resultado = await respuesta.json();
 
 				//se utiliza array.concat() para agregar las imagenes de la nueva pagina a las anteriores.
